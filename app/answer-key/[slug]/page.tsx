@@ -177,7 +177,7 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
       {/* The modal will still open normally because of the ?modal=true parameter */}
       {modal === 'true' && <DistrictModal pdfUrl={item.pdfUrl} />}
 
-      <AstraCareerPage />
+
 
     </main>
   )

@@ -10,8 +10,7 @@ export default function Home() {
    
   <Homepage />
   <AnswerKeyCards />
-  <AstraCareerPage />
-  <AstroLogicApp />
+
    </>
   );
 }

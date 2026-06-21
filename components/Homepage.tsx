@@ -22,84 +22,44 @@ const cardVariants: Variants = {
   }),
 }
 
-// Updated cards to emphasize Luck, Data, and Trust/Records
+// Updated cards focusing on speed, trust, and accuracy
 const cards = [
   {
-    emoji: '🍀',
-    title: 'The Role of Luck & Timing',
-    desc: "While hard work is non-negotiable, timing and planetary alignments play a crucial role. We help you understand when fortune favors your efforts so you can act with confidence.",
+    emoji: '⚡',
+    title: 'Fastest Answers',
+    desc: "Get the Re-NEET answer key before anyone else. We provide the quickest, most reliable solutions immediately after the exam concludes.",
   },
   {
-    emoji: '📊',
-    title: 'Backed by Deep Data',
-    desc: 'We don’t just rely on intuition. Our insights are cross-referenced with massive datasets from successful medical professionals to give you highly accurate, factual guidance.',
+    emoji: '🛡️',
+    title: 'Trusted Source',
+    desc: '100% verified answers crafted and cross-checked by top medical faculty and subject matter experts. No guesswork, just facts.',
   },
   {
-    emoji: '📜',
-    title: 'A Century of Proven Records',
-    desc: 'Built upon over 100 years of documented success stories and astrological patterns of top achievers. Every reading is rooted in deep historical accuracy you can trust.',
+    emoji: '📝',
+    title: 'Complete Analysis',
+    desc: 'Detailed step-by-step solutions for Physics, Chemistry, and Biology so you can calculate your exact score with absolute confidence.',
   },
 ] as const
 
-function FloatingEmoji({ emoji, reduce }: { emoji: string; reduce: boolean }) {
-  return (
-    <motion.div
-      className="text-4xl md:text-5xl"
-      animate={reduce ? undefined : { y: [0, -8, 0] }}
-      transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
-      aria-hidden
-    >
-      {emoji}
-    </motion.div>
-  )
-}
-
-  const goToCareer = () => {
-    document
-      .getElementById("career-section")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  };
+const goToAnswers = () => {
+  document
+    .getElementById("answer-section")
+    ?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+};
 
 const Homepage = () => {
   const prefersReducedMotion = useReducedMotion()
   const reduce = !!prefersReducedMotion
 
   return (
-    <main className="min-h-screen bg-[#FAF6ED] text-[#1A1A1A]">
-      {/* ---------- ambient astrology backdrop (very light, decorative) ---------- */}
+    <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans">
+      {/* ---------- ambient educational backdrop (clean, subtle grid) ---------- */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <svg
-          className="absolute -right-24 -top-24 h-[520px] w-[520px] opacity-[0.07] md:h-[640px] md:w-[640px]"
-          viewBox="0 0 200 200"
-        >
-          <circle cx="100" cy="100" r="92" fill="none" stroke="#C99A3D" strokeWidth="0.6" />
-          <circle cx="100" cy="100" r="70" fill="none" stroke="#C99A3D" strokeWidth="0.4" />
-          {Array.from({ length: 12 }).map((_, i) => {
-            const angle = (i / 12) * Math.PI * 2
-const x1 = (100 + Math.cos(angle) * 92).toFixed(3)
-  const y1 = (100 + Math.sin(angle) * 92).toFixed(3)
-  const x2 = (100 + Math.cos(angle) * 78).toFixed(3)
-  const y2 = (100 + Math.sin(angle) * 78).toFixed(3)
-            return (
-              <line 
-      key={i} 
-      x1={x1} 
-      y1={y1} 
-      x2={x2} 
-      y2={y2} 
-      stroke="#C99A3D" 
-      strokeWidth="0.6" 
-    />
-            )
-          })}
-        </svg>
-        <div className="absolute left-[6%] top-[22%] h-1.5 w-1.5 rounded-full bg-[#C99A3D]/30" />
-        <div className="absolute left-[14%] top-[60%] h-1 w-1 rounded-full bg-[#1B2A4A]/20" />
-        <div className="absolute left-[40%] top-[12%] h-1 w-1 rounded-full bg-[#C99A3D]/30" />
-        <div className="absolute right-[20%] top-[70%] h-1.5 w-1.5 rounded-full bg-[#1B2A4A]/20" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-[#3B82F6] opacity-[0.15] blur-[100px]"></div>
       </div>
 
       {/* ---------------------------------- hero ---------------------------------- */}
@@ -111,148 +71,90 @@ const x1 = (100 + Math.cos(angle) * 92).toFixed(3)
           animate="visible"
           variants={fadeUp}
         >
-          <div className="relative aspect-[8/10] overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-[#C99A3D]/30">
+          <div className="relative aspect-[8/10] overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-[#3B82F6]/20">
             <Image
-              src="/Palm_checking.png"
-              alt="Career advisor offering palm-reading guidance"
+              src="/doctor.jpg"
+              alt="Medical student checking Re-NEET exam answer key"
               fill
               priority
               sizes="(max-width: 768px) 300px, 340px"
               className="object-cover"
             />
-
-            {/* signature element: a hand-drawn constellation tracing across the portrait */}
-            <svg
-              className="absolute inset-0 h-full w-full"
-              viewBox="0 0 300 533"
-              aria-hidden
-              fill="none"
-            >
-              <motion.path
-                d="M48 90 L96 150 L84 230 L150 270 L210 220 L240 320"
-                stroke="#E8C77A"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.9 }}
-                transition={{ duration: 1.8, delay: 0.6, ease: 'easeInOut' }}
-              />
-              {[
-                [48, 90],
-                [96, 150],
-                [84, 230],
-                [150, 270],
-                [210, 220],
-                [240, 320],
-              ].map(([cx, cy], i) => (
-                <motion.circle
-                  key={i}
-                  cx={cx}
-                  cy={cy}
-                  r={3}
-                  fill="#E8C77A"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.6 + i * 0.18 }}
-                />
-              ))}
-            </svg>
+            {/* Urgent overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent"></div>
           </div>
 
           {/* trust badge */}
           <motion.div
-            className="absolute -bottom-6 -right-5 rounded-2xl bg-white px-5 py-3 shadow-xl ring-1 ring-black/5 md:-right-8"
+            className="absolute -bottom-6 -right-5 rounded-2xl bg-white px-5 py-3 shadow-xl ring-1 ring-black/5 md:-right-8 border-l-4 border-[#10B981]"
             variants={fadeUp}
             custom={1}
             initial="hidden"
             animate="visible"
           >
-            <p className="text-2xl font-bold leading-none text-[#1B2A4A]">10,000+</p>
-            <p className="mt-1 text-xs text-[#1A1A1A]/55">students guided</p>
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#10B981]"></span>
+              </span>
+              <p className="text-xl font-bold leading-none text-[#0F172A]">Live Now</p>
+            </div>
+            <p className="mt-1 text-xs text-[#0F172A]/60 font-medium">Verified by Experts</p>
           </motion.div>
         </motion.div>
 
         {/* text side */}
         <div className="relative w-full max-w-xl">
-          {/* decorative mark */}
-          <span
-            aria-hidden
-            className="absolute -left-3 -top-6 text-5xl text-[#C99A3D]/15 md:-left-5 md:-top-8 md:text-6xl"
-          >
-            ✦
-          </span>
-
           <motion.p
-            className="relative inline-block rounded-full bg-[#1B2A4A]/5 px-4 py-1 text-sm font-semibold tracking-wide text-[#1B2A4A]"
+            className="relative inline-block rounded-full bg-[#EF4444]/10 px-4 py-1.5 text-sm font-bold tracking-wide text-[#EF4444]"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             custom={0}
           >
-            Astro Career Advisory
+            🚨 June 21 Re-NEET Update
           </motion.p>
 
           <motion.h1
-            className="mt-5 font-serif text-4xl font-bold leading-tight text-[#1A1A1A] md:text-5xl lg:text-[3.25rem]"
+            className="mt-5 text-4xl font-extrabold tracking-tight leading-tight text-[#0F172A] md:text-5xl lg:text-[3.25rem]"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             custom={1}
           >
-            Your Hand Holds Clues To Your{' '}
+            The Fastest Answer Key For{' '}
             <span className="relative inline-block whitespace-nowrap px-1">
-              <span className="absolute inset-0 scale-150 rounded-full bg-[#C99A3D]/20 blur-xl" aria-hidden="true"></span>
-              <span
-                className="
-  relative
-  inline-block
-  px-2
-  font-black
-  not-italic
-  tracking-[-0.06em]
-  text-[#1B2A4A]
-  drop-shadow-[0_10px_25px_rgba(27,42,74,0.18)]
-  after:absolute
-  after:left-0
-  after:bottom-[0.12em]
-  after:h-[0.32em]
-  after:w-full
-  after:rounded-full
-  after:bg-[#E8C77A]
-  after:-z-10
-"
-              >
-                NEET
-              </span>{' '}
-              <span className="absolute -right-6 -top-4 text-2xl animate-pulse text-[#E8C77A] drop-shadow-sm" aria-hidden="true">
-                ✨
+              <span className="absolute inset-0 scale-110 rounded-lg bg-[#3B82F6]/10" aria-hidden="true"></span>
+              <span className="relative inline-block px-2 text-[#2563EB]">
+                Re-NEET 2024
               </span>
             </span>
-            Journey
           </motion.h1>
 
           <motion.p
-            className="mt-4 text-base leading-relaxed text-[#1A1A1A]/70 md:text-lg"
+            className="mt-4 text-base font-medium leading-relaxed text-[#475569] md:text-lg"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             custom={2}
           >
-            Trusted hand-reading guidance for NEET aspirants — pairing traditional
-            palmistry with real patterns from thousands of students who walked this
-            road before you.
+            Don't wait in suspense. Get instant access to the most accurate, reliable, and trusted answer sheet for the June 21st Re-NEET exam. Calculate your score with 100% confidence today.
           </motion.p>
 
           <motion.div
-            className="mt-5 flex flex-wrap items-center gap-2 text-sm"
+            className="mt-6 flex flex-wrap items-center gap-3 text-sm"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             custom={3}
           >
-            <span className="font-bold text-[#1A1A1A]">Expert in Hand Reading</span>
-            <span className="rounded-full bg-[#C99A3D]/15 px-3 py-1 font-semibold text-[#8a6a22]">
-              Lakhs of NEET Topper records
+            <span className="flex items-center gap-1 font-bold text-[#0F172A] bg-white px-3 py-1.5 rounded-md shadow-sm border border-slate-200">
+              <svg className="w-4 h-4 text-[#10B981]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+              Trusted Source
+            </span>
+            <span className="flex items-center gap-1 font-bold text-[#0F172A] bg-white px-3 py-1.5 rounded-md shadow-sm border border-slate-200">
+              <svg className="w-4 h-4 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              Fastest Updates
             </span>
           </motion.div>
 
@@ -264,20 +166,18 @@ const x1 = (100 + Math.cos(angle) * 92).toFixed(3)
           >
             <button
               type="button"
-              className="mt-8 cursor-pointer rounded-full bg-[#1B2A4A] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1B2A4A]/20 transition-transform duration-200 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C99A3D]"
-              onClick={goToCareer}
+              className="mt-8 cursor-pointer flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#2563EB]/30 transition-all duration-200 hover:bg-[#1D4ED8] hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
+              onClick={goToAnswers}
             >
-              Get My Free Reading
+              Check Answer Sheet Now
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
-            <p className="mt-3 text-xs text-[#1A1A1A]/45">
-              Guidance and perspective, not a guarantee — your effort still decides the result.
+            <p className="mt-3 text-xs font-medium text-[#64748B]">
+              No registration required. Instant PDF download available.
             </p>
           </motion.div>
         </div>
       </section>
-
-      {/* ----------------------------- what we offer ----------------------------- */}
-    
     </main>
   )
 }
