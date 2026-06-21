@@ -31,10 +31,10 @@ export const answerKeys: AnswerKey[] = [
       'Important Concepts Review',
     ],
     sets: [
-      { name: 'Set A', url: null }, // Clean null instead of "null" string
-      { name: 'Set B', url: null },
-      { name: 'Set C', url: '/pdf/physics-set-c.pdf' },
-      { name: 'Set D', url: '/pdf/physics-set-d.pdf' },
+      { name: 'Set A', url: null  }, // Clean null instead of "null" string
+      { name: 'Set B', url: null  },
+      { name: 'Set C', url: null},
+      { name: 'Set D', url: null  },
     ],
   },
   {

@@ -6,7 +6,7 @@ import { answerKeys, getAnswerKeyBySlug } from '@/Data/answer-keys'
 import DistrictModal from '@/components/DistrictModal'
 import AstraCareerPage from '@/components/Palm/PalmHomepage'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yourdomain.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.playwithdate.in'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -75,6 +75,19 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
   // The 4 paper sets available for download
   const paperSets = ['A', 'B', 'C', 'D']
 
+  // 🔥 FIX LOGIC: Match the query param '?set=A' with the object inside item.sets
+  const currentSet = set ? set.trim().toUpperCase() : null;
+  const matchedSetObj = item.sets.find(
+    (s) => s.name.toUpperCase() === currentSet || s.name.toUpperCase() === `SET ${currentSet}`
+  );
+
+  // If they clicked the Master Download button directly (no specific set param), 
+  // fall back to the first available set that has a valid URL
+  const fallbackSetObj = item.sets.find((s) => s.url !== null);
+
+  // Determine final string or null to pass downstream
+  const computedPdfUrl = matchedSetObj?.url ?? fallbackSetObj?.url ?? null;
+
   return (
     <main className="min-h-screen bg-[#FAF6ED]">
       <script
@@ -87,7 +100,7 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
           href="/"
           className="text-sm font-semibold text-[#1B2A4A]/60 transition-colors hover:text-[#1B2A4A]"
         >
-          ← Back to home
+          &larr; Back to home
         </Link>
 
         <div className="mt-8 grid gap-10 md:grid-cols-[450px_1fr] md:items-start">
@@ -107,7 +120,7 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
           {/* Content Container */}
           <div>
             <span className="inline-block rounded-full bg-[#C99A3D]/15 px-3 py-1 text-xs font-semibold text-[#8a6a22]">
-              Re-NEET 2026 · 21 July
+              Re-NEET 2026 &middot; 21 July
             </span>
 
             <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-[#1A1A1A] md:text-4xl">
@@ -150,7 +163,7 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
               </div>
             </div>
 
-            {/* NEW: Master Download Button */}
+            {/* Master Download Button */}
             <div className="mt-8">
               <Link
                 href="?modal=true"
@@ -174,10 +187,8 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
         </div>
       </div>
 
-      {/* The modal will still open normally because of the ?modal=true parameter */}
-      {modal === 'true' && <DistrictModal pdfUrl={item.pdfUrl} />}
-
-
+      {/* Passing down the dynamically matched set URL string */}
+      {modal === 'true' && <DistrictModal pdfUrl={computedPdfUrl} />}
 
     </main>
   )
