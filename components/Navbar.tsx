@@ -28,7 +28,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/answers"
+            href="/#answer-cards"
             className="text-green-700 hover:text-green-800 active:text-green-900 font-bold tracking-wide transition-colors duration-200"
           >
             NEET Answers
@@ -67,7 +67,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/answers"
+            href="/#answer-cards"
             onClick={handleLinkClick}
             className="text-green-700 hover:text-green-800 font-bold py-1 transition-colors"
           >
