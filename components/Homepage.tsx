@@ -277,45 +277,7 @@ const x1 = (100 + Math.cos(angle) * 92).toFixed(3)
       </section>
 
       {/* ----------------------------- what we offer ----------------------------- */}
-      <section className="relative mx-auto max-w-7xl px-6 py-20 md:px-16 lg:px-24">
-        <motion.div
-          className="mx-auto max-w-2xl text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={fadeUp}
-        >
-          <p className="text-sm font-semibold uppercase tracking-wider text-[#C99A3D]">
-            Why aspirants trust us
-          </p>
-          {/* Updated Heading Here */}
-          <h2 className="mt-3 font-serif text-2xl font-bold text-[#1A1A1A] md:text-3xl">
-            A Century of Records from Successful People
-          </h2>
-        </motion.div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {cards.map((card, i) => (
-            <motion.div
-              key={card.title}
-              className="group rounded-3xl border border-[#1B2A4A]/8 bg-white p-7 shadow-sm transition-shadow duration-300 hover:shadow-xl"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={i}
-              variants={cardVariants}
-            >
-              <FloatingEmoji emoji={card.emoji} reduce={reduce} />
-              <h3 className="mt-5 font-serif text-lg font-bold text-[#1A1A1A]">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#1A1A1A]/65">
-                {card.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    
     </main>
   )
 }

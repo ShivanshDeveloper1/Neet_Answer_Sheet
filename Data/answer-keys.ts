@@ -1,20 +1,17 @@
 export type AnswerKeySet = {
-  name: string
-  url: string
-}
-
-// Inside @/Data/answer-keys.ts
+  name: string;
+  url: string | null; // Allows tracking unavailable PDFs cleanly
+};
 
 export type AnswerKey = {
   slug: string;
   subject: string;
-  title: string; // 👈 Add this
+  title: string;
   description: string;
   longDescription: string;
   thumbnail: string;
   highlights: string[];
-  // 👇 Add this line so TypeScript knows it exists!
-  pdfUrl: string; 
+  sets: AnswerKeySet[]; // Added this so TypeScript passes successfully!
 };
 
 export const answerKeys: AnswerKey[] = [
@@ -33,20 +30,11 @@ export const answerKeys: AnswerKey[] = [
       'Chapter-wise Analysis',
       'Important Concepts Review',
     ],
-    // Add all your sets here:
     sets: [
-      { name: 'Set A', url: '/pdf/physics-set-a.pdf' },
-      
-
-      { name: 'Set B', url: '/pdf/physics-set-b.pdf' },
-
-
+      { name: 'Set A', url: null }, // Clean null instead of "null" string
+      { name: 'Set B', url: null },
       { name: 'Set C', url: '/pdf/physics-set-c.pdf' },
-
-
       { name: 'Set D', url: '/pdf/physics-set-d.pdf' },
-
-
     ],
   },
   {
@@ -93,12 +81,12 @@ export const answerKeys: AnswerKey[] = [
       { name: 'Set D', url: '/pdf/biology-set-d.pdf' },
     ],
   },
-]
+];
 
 export function getAllAnswerKeys() {
-  return answerKeys
+  return answerKeys;
 }
 
 export function getAnswerKeyBySlug(slug: string) {
-  return answerKeys.find((item) => item.slug === slug)
+  return answerKeys.find((item) => item.slug === slug);
 }
