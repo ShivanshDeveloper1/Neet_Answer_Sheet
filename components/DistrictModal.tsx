@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function DistrictModal() {
+export default function DistrictModal({ pdfUrl }: { pdfUrl: string }) {
   const router = useRouter();
   const [stateName, setStateName] = useState("");
   const [districtName, setDistrictName] = useState("");

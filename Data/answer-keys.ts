@@ -3,16 +3,19 @@ export type AnswerKeySet = {
   url: string
 }
 
+// Inside @/Data/answer-keys.ts
+
 export type AnswerKey = {
-  slug: string
-  title: string
-  description: string
-  thumbnail: string
-  longDescription: string
-  subject: string
-  highlights: string[]
-  sets: AnswerKeySet[] // <-- Replaces single pdfUrl
-}
+  slug: string;
+  subject: string;
+  title: string; // 👈 Add this
+  description: string;
+  longDescription: string;
+  thumbnail: string;
+  highlights: string[];
+  // 👇 Add this line so TypeScript knows it exists!
+  pdfUrl: string; 
+};
 
 export const answerKeys: AnswerKey[] = [
   {
