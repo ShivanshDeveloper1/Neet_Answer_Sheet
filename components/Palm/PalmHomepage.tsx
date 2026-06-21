@@ -91,7 +91,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.97 }}
                 className="bg-gradient-to-r from-[#4648d4] to-[#6063ee] text-white w-full md:w-fit px-12 py-5 rounded-lg text-2xl font-bold shadow-xl relative overflow-hidden group"
               >
-                <Link href={'/palm-scan'} className=" cursor-pointer relative z-10 flex items-center justify-center gap-2 cursor-pointer">
+                <Link href={'/payment-gateway'} className=" cursor-pointer relative z-10 flex items-center justify-center gap-2 cursor-pointer">
                   Get Started 🚀
                 </Link>
               </motion.button>
@@ -235,7 +235,7 @@ const CTASection = () => {
 
 export default function AstraCareerPage() {
   return (
-    <div className="bg-[#FAF6ED] text-black font-sans overflow-x-hidden min-h-screen selection:bg-[#4648d4]/20">
+    <div id='career-section' className=" bg-[#FAF6ED] text-black font-sans overflow-x-hidden min-h-screen selection:bg-[#4648d4]/20">
       <AnnouncementBar />
       <HeroSection />
       <TrustGrid />

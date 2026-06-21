@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Navbar />
         {children}
       </body>
     </html>

@@ -39,7 +39,7 @@ const fadeUp: Variants = {
 
 export default function AnswerKeyCards() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#FAF6ED] px-6 py-20 text-[#1A1A1A] md:px-16 lg:px-24">
+    <section id='answer-cards' className="relative w-full overflow-hidden bg-[#FAF6ED] px-6 py-20 text-[#1A1A1A] md:px-16 lg:px-24">
       {/* Decorative Astrology/Celestial Background */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-[0.03] grayscale transition-opacity duration-700 hover:opacity-[0.06]">
         <span className="absolute left-[10%] top-[10%] text-7xl">✨</span>

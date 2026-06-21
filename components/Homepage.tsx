@@ -54,6 +54,15 @@ function FloatingEmoji({ emoji, reduce }: { emoji: string; reduce: boolean }) {
   )
 }
 
+  const goToCareer = () => {
+    document
+      .getElementById("career-section")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
 const Homepage = () => {
   const prefersReducedMotion = useReducedMotion()
   const reduce = !!prefersReducedMotion
@@ -255,7 +264,8 @@ const x1 = (100 + Math.cos(angle) * 92).toFixed(3)
           >
             <button
               type="button"
-              className="mt-8 rounded-full bg-[#1B2A4A] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1B2A4A]/20 transition-transform duration-200 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C99A3D]"
+              className="mt-8 cursor-pointer rounded-full bg-[#1B2A4A] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1B2A4A]/20 transition-transform duration-200 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C99A3D]"
+              onClick={goToCareer}
             >
               Get My Free Reading
             </button>

@@ -1,9 +1,12 @@
 "use client"
 import React, { useState } from 'react';
 import '@/app/App.css'; // Adjust import path to wherever your CSS is
+import { useRouter } from 'next/navigation';
 
 export default function AstroLogicApp() {
   const [ctaHovered, setCtaHovered] = useState(false);
+
+  const router = useRouter()
 
   return (
     
@@ -38,6 +41,7 @@ export default function AstroLogicApp() {
                 onMouseEnter={() => setCtaHovered(true)}
                 onMouseLeave={() => setCtaHovered(false)}
                 style={ctaHovered ? { transform: 'translateY(-2px)' } : { transform: 'translateY(0)' }}
+                onClick={()=>router.push('/payment-gateway')}
               >
                 Discover My Future
                 <span className="group-hover:translate-x-1 transition-transform">➔</span>
