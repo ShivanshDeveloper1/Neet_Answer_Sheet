@@ -5,13 +5,10 @@ import Submission from "@/models/Submission";
 
 export async function POST(request: Request) {
   try {
-    // 1. Establish/Retrieve the cached DB connection
-    await connectDB();
-
     const body = await request.json();
     const { stateName, districtName, name, phoneNumber } = body;
 
-    // 2. Validate data presence
+    // STEP 1: Validate strings before opening database socket links
     if (!stateName || !districtName || !name || !phoneNumber) {
       return NextResponse.json(
         { error: "All input fields are required." },
@@ -19,28 +16,30 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3. Validate the 10-digit telephone number constraint
+    const cleanPhone = phoneNumber.trim();
     const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(phoneNumber.trim())) {
+    if (!phoneRegex.test(cleanPhone)) {
       return NextResponse.json(
         { error: "Phone number must be exactly 10 digits." },
         { status: 400 }
       );
     }
 
-    // 4. Save to database using Mongoose
+    // STEP 2: Input is 100% clean, now talk to the database safely
+    await connectDB();
+
     const newSubmission = await Submission.create({
-      stateName,
-      districtName,
-      name,
-      phoneNumber: phoneNumber.trim(),
+      stateName: stateName.trim(),
+      districtName: districtName.trim(),
+      name: name.trim(),
+      phoneNumber: cleanPhone,
     });
 
     return NextResponse.json({ success: true, id: newSubmission._id });
   } catch (error: any) {
-    console.error("Submission Error:", error);
+    console.error("CRITICAL: Submission Save Failed:", error);
     return NextResponse.json(
-      { error: error.message || "Internal Server Error" },
+      { error: "Could not save submission to database safely." },
       { status: 500 }
     );
   }

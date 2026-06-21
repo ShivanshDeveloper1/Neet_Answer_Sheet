@@ -82,7 +82,6 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Increased max-w to give the wider layout more room to breathe */}
       <div className="mx-auto max-w-5xl px-6 py-14 md:px-10">
         <Link
           href="/"
@@ -91,9 +90,9 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
           ← Back to home
         </Link>
 
-        {/* Widened the image column from 280px to 420px */}
         <div className="mt-8 grid gap-10 md:grid-cols-[450px_1fr] md:items-start">
-          {/* Changed aspect ratio from [3/4] portrait to [16/10] landscape to make it wide */}
+          
+          {/* Image Container */}
           <div className="relative aspect-[8/9] w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-[#C99A3D]/30">
             <Image
               src={item.thumbnail}
@@ -105,17 +104,16 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
             />
           </div>
 
+          {/* Content Container */}
           <div>
             <span className="inline-block rounded-full bg-[#C99A3D]/15 px-3 py-1 text-xs font-semibold text-[#8a6a22]">
               Re-NEET 2026 · 21 July
             </span>
 
-            {/* Increased text size (text-3xl md:text-4xl) */}
             <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-[#1A1A1A] md:text-4xl">
               {item.subject} Answer Key
             </h1>
 
-            {/* Increased paragraph text size to text-lg */}
             <p className="mt-4 text-lg leading-relaxed text-[#1A1A1A]/70">
               {item.longDescription}
             </p>
@@ -132,7 +130,7 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
               ))}
             </ul>
 
-            {/* NEW UI: Clean, rounded-xl buttons for Sets A, B, C, D */}
+            {/* Paper Sets */}
             <div className="mt-10">
               <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-[#1A1A1A]/50">
                 Select Paper Set
@@ -150,6 +148,26 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
                   </Link>
                 ))}
               </div>
+            </div>
+
+            {/* NEW: Master Download Button */}
+            <div className="mt-8">
+              <Link
+                href="?modal=true"
+                scroll={false}
+                className="group flex w-full md:w-max items-center justify-center gap-3 rounded-xl bg-[#C99A3D] px-8 py-4 text-base font-bold text-white shadow-md transition-all hover:-translate-y-1 hover:bg-[#b58935] hover:shadow-lg"
+              >
+                <svg 
+                  className="h-5 w-5 transition-transform group-hover:translate-y-1" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download Master Answer Key
+              </Link>
             </div>
 
           </div>
