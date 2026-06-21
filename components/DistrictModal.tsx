@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function DistrictModal({ pdfUrl }: { pdfUrl: string | null }) {
@@ -9,11 +9,14 @@ export default function DistrictModal({ pdfUrl }: { pdfUrl: string | null }) {
   const [districtName, setDistrictName] = useState("");
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [studentClass, setStudentClass] = useState(""); // Added state for Class
+  const [studentClass, setStudentClass] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Expanded distribution tracking array
+  // Dropdown visibility states
+  const [showStateDropdown, setShowStateDropdown] = useState(false);
+  const [showDistrictDropdown, setShowDistrictDropdown] = useState(false);
+
   const districtsByState: Record<string, string[]> = {
     "Uttar Pradesh": ["Saharanpur", "Kandhala", "Muzaffarnagar", "Meerut", "Lucknow", "Kanpur", "Varanasi"],
     "Delhi": ["New Delhi", "North Delhi", "South Delhi", "East Delhi", "West Delhi"],
@@ -22,11 +25,24 @@ export default function DistrictModal({ pdfUrl }: { pdfUrl: string | null }) {
     "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik"],
   };
 
+  // Default fallback districts if no valid state is selected yet
+  const defaultDistricts = ["Saharanpur", "Kandhala", "Muzaffarnagar", "Meerut"];
+
+  // Filter states based on what user types
+  const filteredStates = Object.keys(districtsByState).filter((state) =>
+    state.toLowerCase().includes(stateName.toLowerCase())
+  );
+
+  // Filter districts based on selected state or fallback to defaults
+  const currentDistrictPool = districtsByState[stateName] || defaultDistricts;
+  const filteredDistricts = currentDistrictPool.filter((dist) =>
+    dist.toLowerCase().includes(districtName.toLowerCase())
+  );
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    // 1. Validate 10-digit phone constraints first
     if (!/^\d{10}$/.test(phoneNumber)) {
       setError("Please input a valid 10-digit number.");
       return;
@@ -34,7 +50,6 @@ export default function DistrictModal({ pdfUrl }: { pdfUrl: string | null }) {
 
     setLoading(true);
     try {
-      // 2. ALWAYS send data to the database first (added studentClass)
       const res = await fetch("/api/save-district", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,16 +59,12 @@ export default function DistrictModal({ pdfUrl }: { pdfUrl: string | null }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong saving your details.");
 
-      // 3. Now check if the PDF is available
       if (!pdfUrl || pdfUrl === "null" || pdfUrl === "") {
         setError("Your details have been submitted! However, this answer key is not available for now. Please check again after some time.");
         return;
       }
 
-      // 4. If the PDF link is valid, open it cleanly
       window.open(pdfUrl, "_blank");
-      
-      // Close the modal by navigating back
       router.push("/");
     } catch (err: any) {
       setError(err.message);
@@ -77,48 +88,78 @@ export default function DistrictModal({ pdfUrl }: { pdfUrl: string | null }) {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* STATE FIELD - Input with Datalist */}
-          <div>
+          
+          {/* STATE FIELD with Instant Dropdown */}
+          <div className="relative">
             <label className="block text-sm font-medium text-gray-700">State Name</label>
             <input
               type="text"
-              list="state-options"
               value={stateName}
+              onFocus={() => setShowStateDropdown(true)}
+              onBlur={() => setTimeout(() => setShowStateDropdown(false), 200)} // Delay to let click execute
               onChange={(e) => {
                 setStateName(e.target.value);
-                setDistrictName(""); // Reset district when state changes
+                setDistrictName(""); 
+                setShowStateDropdown(true);
               }}
               className="mt-1 w-full p-2 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
               placeholder="Select or type state"
               required
             />
-            <datalist id="state-options">
-              {Object.keys(districtsByState).map((state) => (
-                <option key={state} value={state} />
-              ))}
-            </datalist>
+            {showStateDropdown && filteredStates.length > 0 && (
+              <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-40 overflow-y-auto">
+                {filteredStates.map((state) => (
+                  <li
+                    key={state}
+                    onMouseDown={() => {
+                      setStateName(state);
+                      setDistrictName("");
+                      setShowStateDropdown(false);
+                    }}
+                    className="p-2 hover:bg-purple-50 cursor-pointer text-sm transition-colors"
+                  >
+                    {state}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
-          {/* DISTRICT FIELD - Input with Datalist */}
-          <div>
+          {/* DISTRICT FIELD with Instant Dropdown */}
+          <div className="relative">
             <label className="block text-sm font-medium text-gray-700">District Name</label>
             <input
               type="text"
-              list="district-options"
               value={districtName}
-              onChange={(e) => setDistrictName(e.target.value)}
+              onFocus={() => setShowDistrictDropdown(true)}
+              onBlur={() => setTimeout(() => setShowDistrictDropdown(false), 200)}
+              onChange={(e) => {
+                setDistrictName(e.target.value);
+                setShowDistrictDropdown(true);
+              }}
               className="mt-1 w-full p-2 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
               placeholder="Select or type district"
               required
             />
-            <datalist id="district-options">
-              {districtsByState[stateName]?.map((dist) => (
-                <option key={dist} value={dist} />
-              ))}
-            </datalist>
+            {showDistrictDropdown && filteredDistricts.length > 0 && (
+              <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-40 overflow-y-auto">
+                {filteredDistricts.map((dist) => (
+                  <li
+                    key={dist}
+                    onMouseDown={() => {
+                      setDistrictName(dist);
+                      setShowDistrictDropdown(false);
+                    }}
+                    className="p-2 hover:bg-purple-50 cursor-pointer text-sm font-medium text-gray-700 transition-colors"
+                  >
+                    {dist}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
-          {/* CLASS FIELD - Standard Select Dropdown */}
+          {/* CLASS FIELD */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Class</label>
             <select
