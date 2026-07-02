@@ -11,6 +11,7 @@ export type AnswerKey = {
   longDescription: string;
   thumbnail: string;
   subjects: string[];
+  pdfUrl: string; // <-- Added this field
   highlights: string[];
   
 };
@@ -25,6 +26,7 @@ export const answerKeys: AnswerKey[] = [
     longDescription:
       'Includes Child Development & Pedagogy, Hindi, English, Mathematics and Environmental Studies with detailed solutions.',
     thumbnail: '/UPTET_paper_1.jpeg',
+    pdfUrl: '/UPTET_Complete_DF.pdf',
 
     subjects: [
       'CDP',
@@ -58,6 +60,7 @@ export const answerKeys: AnswerKey[] = [
       'Includes Child Development & Pedagogy, Hindi, English, Mathematics and Science with detailed explanations.',
 
     thumbnail: '/UPTET_paper_2.jpeg',
+        pdfUrl: '/UPTET(math and science).pdf',
 
     subjects: [
       'CDP',
@@ -91,6 +94,7 @@ export const answerKeys: AnswerKey[] = [
       'Includes Child Development & Pedagogy, Hindi, English and Social Studies with detailed solutions.',
 
     thumbnail: '/uptet_paper_3.jpeg',
+        pdfUrl: '/UPTET_Paper 2_Social Studies).pdf',
 
     subjects: [
       'CDP',

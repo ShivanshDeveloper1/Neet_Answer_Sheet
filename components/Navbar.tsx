@@ -15,7 +15,7 @@ export default function Navbar() {
         
         {/* Logo */}
         <h1 className="text-gray-900 font-extrabold text-base md:text-xl tracking-wider select-none">
-          NEET ASTRO ADVISOR
+          Bulbul Paper Analyzer
         </h1>
 
         {/* Desktop Navigation */}
@@ -31,7 +31,7 @@ export default function Navbar() {
             href="/#answer-cards"
             className="text-green-700 hover:text-green-800 active:text-green-900 font-bold tracking-wide transition-colors duration-200"
           >
-            NEET Answers
+            UPTET PDF
           </Link>
 
          

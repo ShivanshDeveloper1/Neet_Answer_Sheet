@@ -182,7 +182,7 @@ export default async function AnswerKeyDetailPage({ params, searchParams }: Prop
             {/* Premium Call to Action Master Trigger */}
             <div className="mt-10 pt-4">
               <Link
-                href="?modal=true"
+               href={`/payment-pdf/${item.slug}`}
                 scroll={false}
                 className="group flex w-full sm:w-max items-center justify-center gap-3 rounded-2xl bg-[#C99A3D] px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#b58935] hover:shadow-xl"
               >

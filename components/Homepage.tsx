@@ -43,7 +43,7 @@ const cards = [
 
 const goToAnswers = () => {
   document
-    .getElementById("answer-section")
+    .getElementById("answer-cards")
     ?.scrollIntoView({
       behavior: "smooth",
       block: "start",
