@@ -1,85 +1,113 @@
 export type AnswerKeySet = {
   name: string;
-  url: string | null; // Allows tracking unavailable PDFs cleanly
+  url: string | null;
 };
 
 export type AnswerKey = {
   slug: string;
-  subject: string;
+  paper: string;
   title: string;
   description: string;
   longDescription: string;
   thumbnail: string;
+  subjects: string[];
   highlights: string[];
-  sets: AnswerKeySet[]; // Added this so TypeScript passes successfully!
+  
 };
 
 export const answerKeys: AnswerKey[] = [
   {
-    slug: 're-neet-2026-physics-answer-key',
-    title: 'Physics',
+    slug: 'uptet-paper-1',
+    paper: 'Paper 1',
+    title: 'UPTET Paper 1 Complete PDF',
     description:
-      'Download the complete PDF of the 21 July 2026 Re-NEET Physics paper answer key with detailed solutions.',
-    thumbnail: '/Physics_thumb.png',
+      'Complete Paper 1 Question Paper with all subjects in one PDF.',
     longDescription:
-      'Get the complete Physics answer key analysis for the 21 July 2026 Re-NEET examination. This PDF includes correct answers, important concepts, chapter-wise analysis, and detailed explanations to help students review their performance.',
-    subject: 'Physics',
+      'Includes Child Development & Pedagogy, Hindi, English, Mathematics and Environmental Studies with detailed solutions.',
+    thumbnail: '/UPTET_paper_1.jpeg',
+
+    subjects: [
+      'CDP',
+      'Hindi',
+      'English',
+      'Mathematics',
+      'EVS',
+    ],
+
     highlights: [
-      'Complete Physics Answer Key',
+      'Complete Paper 1',
+      'CDP + Hindi + English',
+      'Mathematics',
+      'Environmental Studies',
       'Detailed Solutions',
-      'Chapter-wise Analysis',
-      'Important Concepts Review',
     ],
-    sets: [
-      { name: 'Set A', url: null  }, // Clean null instead of "null" string
-      { name: 'Set B', url: null  },
-      { name: 'Set C', url: null},
-      { name: 'Set D', url: null  },
-    ],
+
+  
   },
+
   {
-    slug: 're-neet-2026-chemistry-answer-key',
-    title: 'Chemistry',
+    slug: 'uptet-paper-2-maths-science',
+    paper: 'Paper 2',
+
+    title: 'UPTET Paper 2 (Maths & Science)',
+
     description:
-      'Download the complete PDF of the 21 July 2026 Re-NEET Chemistry paper answer key with detailed solutions.',
-    thumbnail: '/Chemistry_thumb.png',
+      'Complete Paper 2 PDF for Mathematics & Science candidates.',
+
     longDescription:
-      'Access the Chemistry answer key PDF for the 21 July 2026 Re-NEET exam. Analyze your answers with detailed explanations, important reactions, formulas, and topic-wise performance insights.',
-    subject: 'Chemistry',
+      'Includes Child Development & Pedagogy, Hindi, English, Mathematics and Science with detailed explanations.',
+
+    thumbnail: '/UPTET_paper_2.jpeg',
+
+    subjects: [
+      'CDP',
+      'Hindi',
+      'English',
+      'Mathematics',
+      'Science',
+    ],
+
     highlights: [
-      'Complete Chemistry Answer Key',
-      'Reaction & Formula Analysis',
-      'Detailed Explanations',
-      'Topic-wise Review',
+      'Complete Paper 2',
+      'Maths & Science',
+      'Detailed Solutions',
+      'Previous Year Pattern',
+      'Answer Key Included',
     ],
-    sets: [
-      { name: 'Set A', url: '/pdf/chemistry-set-a.pdf' },
-      { name: 'Set B', url: '/pdf/chemistry-set-b.pdf' },
-      { name: 'Set C', url: '/pdf/chemistry-set-c.pdf' },
-      { name: 'Set D', url: '/pdf/chemistry-set-d.pdf' },
-    ],
+
+    
   },
+
   {
-    slug: 're-neet-2026-biology-answer-key',
-    title: 'Biology',
+    slug: 'uptet-paper-2-social',
+    paper: 'Paper 2',
+
+    title: 'UPTET Paper 2 (Social Studies)',
+
     description:
-      'Download the complete PDF of the 21 July 2026 Re-NEET Biology paper answer key with detailed solutions.',
-    thumbnail: '/Biology_thumbna.jpg',
+      'Complete Paper 2 PDF for Social Studies candidates.',
+
     longDescription:
-      'Review the Biology answer key of the 21 July 2026 Re-NEET examination. Get detailed solutions, important diagrams, NCERT-based analysis, and performance insights for better preparation.',
-    subject: 'Biology',
+      'Includes Child Development & Pedagogy, Hindi, English and Social Studies with detailed solutions.',
+
+    thumbnail: '/uptet_paper_3.jpeg',
+
+    subjects: [
+      'CDP',
+      'Hindi',
+      'English',
+      'Social Studies',
+    ],
+
     highlights: [
-      'Complete Biology Answer Key',
-      'NCERT Based Analysis',
-      'Important Diagrams',
-      'Performance Insights',
+      'Complete Paper 2',
+      'Social Studies',
+      'Detailed Solutions',
+      'Previous Year Pattern',
+      'Answer Key Included',
     ],
-    sets: [
-      { name: 'Set A', url: '/pdf/biology-set-a.pdf' },
-      { name: 'Set B', url: '/pdf/biology-set-b.pdf' },
-      { name: 'Set C', url: '/pdf/biology-set-c.pdf' },
-      { name: 'Set D', url: '/pdf/biology-set-d.pdf' },
-    ],
+
+    
   },
 ];
 

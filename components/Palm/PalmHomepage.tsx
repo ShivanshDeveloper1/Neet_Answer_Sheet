@@ -67,7 +67,7 @@ const HeroSection = () => {
         >
           <motion.div variants={itemVariants} className="space-y-4">
             <h1 className="font-sans text-4xl md:text-5xl font-bold text-black leading-tight">
-              What If Your Hand Already Knows Your <span className="text-[#4648d4]">Future College? 🔮</span>
+              What If Your Hand Already Knows Your <span className="text-[#4648d4]">Future Result? 🔮</span>
             </h1>
             <p className="text-lg text-gray-800 font-medium max-w-md">
               Upload a photo of your palm and receive AI-assisted career and college predictions with expert analysis.

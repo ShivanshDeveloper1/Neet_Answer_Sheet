@@ -5,28 +5,28 @@ import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
 import { answerKeys } from '@/Data/answer-keys'
 
-// Per-subject accent
+// Per-subject accent adapted for UPTET
 const ACCENTS: Record<string, { ring: string; pill: string; text: string; glow: string }> = {
-  Physics: {
+  CDP: {
     ring: 'ring-[#2D6CDF]/25',
     pill: 'bg-[#2D6CDF]/90',
     text: 'text-[#2D6CDF]',
     glow: 'from-[#2D6CDF]/60',
   },
-  Chemistry: {
+  Mathematics: {
     ring: 'ring-[#0F9B8E]/25',
     pill: 'bg-[#0F9B8E]/90',
     text: 'text-[#0F9B8E]',
     glow: 'from-[#0F9B8E]/60',
   },
-  Biology: {
+  EVS: {
     ring: 'ring-[#2E8B57]/25',
     pill: 'bg-[#2E8B57]/90',
     text: 'text-[#2E8B57]',
     glow: 'from-[#2E8B57]/60',
   },
 }
-const DEFAULT_ACCENT = ACCENTS.Physics
+const DEFAULT_ACCENT = ACCENTS.CDP
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -60,10 +60,10 @@ export default function AnswerKeyCards() {
           variants={fadeUp}
         >
           <h2 className="font-serif text-3xl font-bold text-[#1A1A1A] md:text-4xl">
-            RE-NEET Paper 2026
+            UPTET Question Papers
           </h2>
           <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#C99A3D]/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-[#8a6a22]">
-            📄 Official Answer Sheet
+            📄 Most Relevant Questions
           </span>
         </motion.div>
 
@@ -80,14 +80,14 @@ export default function AnswerKeyCards() {
                 variants={fadeUp}
               >
                 <Link
-                  href={`/answer-key/${item.slug}`}
+                  href={`/government/${item.slug}`}
                   // Enhanced the shadow to a dark #1A1A1A tint for that crisp contrast vibe
                   className="group block overflow-hidden rounded-3xl bg-white shadow-md ring-1 ring-[#1A1A1A]/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#1A1A1A]/15"
                 >
                   <div className={`relative aspect-[4/3] overflow-hidden ring-1 ${accent.ring}`}>
                     <Image
                       src={item.thumbnail}
-                      alt={`${item.subject} Re-NEET 2026 answer key thumbnail`}
+                      alt={`${item.subject} UPTET Question Paper thumbnail`}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -104,7 +104,7 @@ export default function AnswerKeyCards() {
 
                   <div className="p-6">
                     <h3 className="font-serif text-lg font-bold text-[#1A1A1A]">
-                      {item.title} Answer Key
+                      {item.title} Papers
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#1A1A1A]/70">
                       {item.description}

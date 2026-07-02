@@ -22,22 +22,22 @@ const cardVariants: Variants = {
   }),
 }
 
-// Updated cards focusing on speed, trust, and accuracy
+// Updated cards focusing on UPTET 16-year analysis
 const cards = [
   {
     emoji: '⚡',
-    title: 'Fastest Answers',
-    desc: "Get the Re-NEET answer key before anyone else. We provide the quickest, most reliable solutions immediately after the exam concludes.",
+    title: 'All-in-One PDF',
+    desc: "Stop hunting for scattered papers. Get 16 years of UPTET previous year questions compiled cleanly into a single, high-quality PDF.",
   },
   {
     emoji: '🛡️',
-    title: 'Trusted Source',
-    desc: '100% verified answers crafted and cross-checked by top medical faculty and subject matter experts. No guesswork, just facts.',
+    title: 'Expert Verified',
+    desc: '100% accurate, NCERT-based solutions crafted and cross-checked by top teaching faculties. No guesswork, just facts.',
   },
   {
     emoji: '📝',
     title: 'Complete Analysis',
-    desc: 'Detailed step-by-step solutions for Physics, Chemistry, and Biology so you can calculate your exact score with absolute confidence.',
+    desc: 'Detailed step-by-step solutions for CDP, EVS, and Mathematics to help you recognize repeated patterns and secure your selection.',
   },
 ] as const
 
@@ -73,8 +73,8 @@ const Homepage = () => {
         >
           <div className="relative aspect-[8/10] overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-[#3B82F6]/20">
             <Image
-              src="/doctor.jpg"
-              alt="Medical student checking Re-NEET exam answer key"
+              src="/government_exame.jpeg" // Kept your original image source
+              alt="Student preparing for UPTET exam with master PDF"
               fill
               priority
               sizes="(max-width: 768px) 300px, 340px"
@@ -97,9 +97,9 @@ const Homepage = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-[#10B981]"></span>
               </span>
-              <p className="text-xl font-bold leading-none text-[#0F172A]">Live Now</p>
+              <p className="text-xl font-bold leading-none text-[#0F172A]">Available Now</p>
             </div>
-            <p className="mt-1 text-xs text-[#0F172A]/60 font-medium">Verified by Experts</p>
+            <p className="mt-1 text-xs text-[#0F172A]/60 font-medium">16 Years of Papers</p>
           </motion.div>
         </motion.div>
 
@@ -112,7 +112,7 @@ const Homepage = () => {
             variants={fadeUp}
             custom={0}
           >
-            🚨 June 21 Re-NEET Update
+            🚨 Ultimate UPTET 2026 Resource
           </motion.p>
 
           <motion.h1
@@ -122,11 +122,11 @@ const Homepage = () => {
             variants={fadeUp}
             custom={1}
           >
-            The Fastest Answer Key For{' '}
+            16 Years of UPTET Analysis In{' '}
             <span className="relative inline-block whitespace-nowrap px-1">
               <span className="absolute inset-0 scale-110 rounded-lg bg-[#3B82F6]/10" aria-hidden="true"></span>
               <span className="relative inline-block px-2 text-[#2563EB]">
-                Re-NEET 2024
+                One Single PDF
               </span>
             </span>
           </motion.h1>
@@ -138,7 +138,7 @@ const Homepage = () => {
             variants={fadeUp}
             custom={2}
           >
-            Don't wait in suspense. Get instant access to the most accurate, reliable, and trusted answer sheet for the June 21st Re-NEET exam. Calculate your score with 100% confidence today.
+            Stop wasting time searching for scattered past papers. Get instant access to a master guide featuring 16 years of UPTET questions, completely solved, analyzed, and organized to guarantee your success.
           </motion.p>
 
           <motion.div
@@ -150,11 +150,11 @@ const Homepage = () => {
           >
             <span className="flex items-center gap-1 font-bold text-[#0F172A] bg-white px-3 py-1.5 rounded-md shadow-sm border border-slate-200">
               <svg className="w-4 h-4 text-[#10B981]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-              Trusted Source
+              100% NCERT Based
             </span>
             <span className="flex items-center gap-1 font-bold text-[#0F172A] bg-white px-3 py-1.5 rounded-md shadow-sm border border-slate-200">
               <svg className="w-4 h-4 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-              Fastest Updates
+              Chapter-wise Breakdown
             </span>
           </motion.div>
 
@@ -169,11 +169,11 @@ const Homepage = () => {
               className="mt-8 cursor-pointer flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#2563EB]/30 transition-all duration-200 hover:bg-[#1D4ED8] hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
               onClick={goToAnswers}
             >
-              Check Answer Sheet Now
+              Download Master PDF Now
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
             <p className="mt-3 text-xs font-medium text-[#64748B]">
-              No registration required. Instant PDF download available.
+              No registration required. Instant one-click PDF download.
             </p>
           </motion.div>
         </div>
