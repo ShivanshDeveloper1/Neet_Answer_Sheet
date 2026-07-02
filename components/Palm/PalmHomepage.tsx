@@ -217,7 +217,7 @@ const CTASection = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => router.push("/palm-scan")}
+            onClick={() => router.push("/")}
             className="bg-gradient-to-r from-[#4648d4] to-[#6063ee] text-white px-12 py-5 rounded-lg text-2xl font-bold shadow-lg"
           >
             Start My Prediction ✨
