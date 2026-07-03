@@ -70,9 +70,15 @@ export default function PaymentGateway() {
           <div className="space-y-4">
             <p className="text-center text-sm font-medium text-gray-500">Scan to pay</p>
             <div className="flex justify-center">
-              <div className="relative w-64 h-64 p-2 border-2 border-dashed border-gray-200 rounded-2xl overflow-hidden">
-                <Image src="/Qr_code.jpeg" alt="QR Code" fill className="object-contain p-2" />
-              </div>
+            <div className="relative w-64 h-64 p-2 border-2 border-dashed border-gray-200 rounded-2xl overflow-hidden">
+  <Image 
+    src="/Qr_code.jpeg" 
+    alt="QR Code" 
+    fill 
+    sizes="256px" 
+    className="object-contain p-2" 
+  />
+</div>
             </div>
             <a 
               href={upiLink}
