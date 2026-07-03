@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { answerKeys, getAnswerKeyBySlug } from '@/Data/answer-keys'
 import DistrictModal from '@/components/DistrictModal'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.playwithdate.in'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.paperkey.fun'
 
 type Props = {
   params: Promise<{ slug: string }>
